@@ -27,7 +27,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import {fonts} from './src/common/theme';
+import {fonts} from '@src/common/theme';
 
 const Section: React.FC<{
   title: string;
