@@ -27,6 +27,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import {fonts} from './src/common/theme';
+
 const Section: React.FC<{
   title: string;
 }> = ({children, title}) => {
@@ -74,8 +76,11 @@ const App = () => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
+            Edit{' '}
+            <Text style={styles.highlight}>
+              App.js ad asd á dá dá dá d asd{' '}
+            </Text>{' '}
+            to change this screen and then come back to see your edits.
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
@@ -108,7 +113,9 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   highlight: {
-    fontWeight: '700',
+    fontFamily: fonts.robotoBlack,
+    fontStyle: 'italic',
+    fontWeight: 'bold',
   },
 });
 
