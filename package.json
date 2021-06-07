@@ -52,6 +52,11 @@
   "resolutions": {
     "@types/react": "^17"
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn lint"
+    }
+  },
   "jest": {
     "preset": "react-native",
     "moduleFileExtensions": [
