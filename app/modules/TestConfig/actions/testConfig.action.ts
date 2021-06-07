@@ -1,5 +1,6 @@
 import {createAction} from '@reduxjs/toolkit';
 
-const setData = createAction<number>('test-config/set-data');
+const setDataRequest = createAction('SET_DATA_REQUEST');
+const setDataSuccess = createAction<{value: number}>('SET_DATA_SUCCESS');
 
-export {setData};
+export {setDataRequest, setDataSuccess};

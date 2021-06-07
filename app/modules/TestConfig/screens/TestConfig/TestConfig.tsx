@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import {Pressable, SafeAreaView, Text} from 'react-native';
 
 import {useAppDispatch, useAppSelector} from 'app/hooks';
-import {setData} from 'app/modules/TestConfig/actions';
+import {setDataRequest} from 'app/modules/TestConfig/actions';
 import {selectData} from 'app/modules/TestConfig/selectors';
 
 const TestConfigScreen = () => {
@@ -10,7 +10,7 @@ const TestConfigScreen = () => {
   const abc = useAppSelector(selectData);
 
   const onPress = useCallback(() => {
-    dispatch(setData(100));
+    dispatch(setDataRequest());
   }, [dispatch]);
 
   return (

@@ -1,5 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {setData} from '../actions';
+import {setDataSuccess} from '../actions';
 
 interface TestConfigState {
   data: number;
@@ -8,8 +8,8 @@ interface TestConfigState {
 const initialState = {data: 0} as TestConfigState;
 
 const testConfigReducer = createReducer(initialState, builder => {
-  builder.addCase(setData, (state, action) => {
-    state.data = state.data + action.payload;
+  builder.addCase(setDataSuccess, (state, action) => {
+    state.data = state.data + action.payload.value;
   });
 });
 
