@@ -10,7 +10,6 @@ const TestConfigScreen = () => {
   const abc = useAppSelector(selectData);
 
   const onPress = useCallback(() => {
-    console.log('object');
     dispatch(setData(100));
   }, [dispatch]);
 
