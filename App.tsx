@@ -10,14 +10,17 @@
 
 import React from 'react';
 import {Provider} from 'react-redux';
+import {NavigationContainer} from '@react-navigation/native';
 
 import {store} from 'app/store';
-import {TestConfigScreen} from 'app/modules/TestConfig/screens';
+import {RootNavigation} from 'app/navigation';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <TestConfigScreen />
+      <NavigationContainer>
+        <RootNavigation />
+      </NavigationContainer>
     </Provider>
   );
 };
