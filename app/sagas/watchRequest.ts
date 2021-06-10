@@ -4,6 +4,7 @@ import {camelCase, endsWith} from 'lodash';
 
 import {api, makeRequest} from 'app/services';
 import {ERROR_POSTFIX, REQUEST_POSTFIX, SUCCESS_POSTFIX} from './constants';
+import {showAlert} from 'app/common/actions';
 
 function* watchRequest({type, payload}: any) {
   try {
@@ -25,9 +26,15 @@ function* watchRequest({type, payload}: any) {
       payload: response.data,
     });
   } catch (error) {
+    yield put(
+      showAlert({
+        title: error?.response?.status,
+        message: error?.response?.data?.message,
+      }),
+    );
     yield put({
       type: type.replace(REQUEST_POSTFIX, ERROR_POSTFIX),
-      error: error.response ? error.response.data : error,
+      error: error?.response?.data,
     });
   }
 }
