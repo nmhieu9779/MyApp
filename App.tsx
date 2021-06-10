@@ -8,6 +8,8 @@
  * @format
  */
 
+import 'app/i18Next';
+
 import React from 'react';
 import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
