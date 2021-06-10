@@ -41,7 +41,7 @@ const Alert = () => {
   }, [hideAlert]);
 
   return (
-    <ReactNativeModal isVisible={isVisible}>
+    <ReactNativeModal isVisible={isVisible} animationOutTiming={500}>
       <View style={style.container}>
         <RCText style={style.title}>{title}</RCText>
         <RCText style={style.message}>{message}</RCText>

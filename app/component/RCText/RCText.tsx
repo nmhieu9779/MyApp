@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  children: string;
+  children: any;
 };
 
 const RCText = (props: TextProps & Props) => {

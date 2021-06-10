@@ -9,4 +9,9 @@ const selectAlert = createSelector(
   commonState => commonState.alert,
 );
 
-export {selectAlert};
+const selectLoadingStatus = (actionsName: Array<string>) =>
+  createSelector(selectCommonState, commonState =>
+    actionsName.some(actionName => commonState.loadingStatus[actionName]),
+  );
+
+export {selectAlert, selectLoadingStatus};
