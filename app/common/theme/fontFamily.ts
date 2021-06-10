@@ -1,4 +1,4 @@
-const fonts = Object.freeze({
+const fontFamily = Object.freeze({
   robotoBlack: 'Roboto-Black',
   robotoBold: 'Roboto-Bold',
   robotoRegular: 'Roboto-Regular',
@@ -7,4 +7,4 @@ const fonts = Object.freeze({
   robotoThin: 'Roboto-Thin',
 });
 
-export {fonts};
+export {fontFamily};

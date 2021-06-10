@@ -1,1 +1,3 @@
-export * from './fonts';
+export * from './fontFamily';
+export * from './fontSize';
+export * from './colors';
