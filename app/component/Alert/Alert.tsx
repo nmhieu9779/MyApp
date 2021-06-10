@@ -6,9 +6,8 @@ import {RCButton} from '../RCButton';
 import {RCText} from '../RCText';
 import {ButtonColorType, ButtonType} from 'app/type';
 import {colors, fontFamily, fontSize} from 'app/common/theme';
-import {useAppDispatch, useAppSelector} from 'app/hooks';
+import {useAppAlert, useAppSelector} from 'app/hooks';
 import {selectAlert} from 'app/common/selectors';
-import {hideAlert} from 'app/common/actions';
 
 const style = StyleSheet.create({
   container: {
@@ -33,18 +32,16 @@ const style = StyleSheet.create({
 });
 
 const Alert = () => {
-  const dispatch = useAppDispatch();
+  const [, hideAlert] = useAppAlert();
 
   const {isVisible, title, message} = useAppSelector(selectAlert);
 
   const onClose = useCallback(() => {
-    dispatch(hideAlert());
-  }, [dispatch]);
+    hideAlert();
+  }, [hideAlert]);
 
   return (
-    <ReactNativeModal
-      isVisible={isVisible}
-      supportedOrientations={['portrait', 'landscape']}>
+    <ReactNativeModal isVisible={isVisible}>
       <View style={style.container}>
         <RCText style={style.title}>{title}</RCText>
         <RCText style={style.message}>{message}</RCText>
