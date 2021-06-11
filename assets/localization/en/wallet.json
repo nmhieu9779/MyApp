@@ -3,5 +3,6 @@
   "Income": "Income",
   "Expenses": "Expenses",
   "Total": "Total",
-  "ExpensesTitle": "Expenses - Last 7 days"
+  "ExpensesTitle": "Expenses - Last 7 days",
+  "TransactionsTitle": "Transactions"
 }

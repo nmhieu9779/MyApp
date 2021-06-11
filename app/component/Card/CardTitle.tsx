@@ -2,11 +2,11 @@ import React from 'react';
 import {StyleProp, StyleSheet, TextStyle} from 'react-native';
 
 import {RCText} from 'app/component';
-import {colors, fontSize} from 'app/common/theme';
+import {colors, FontSize} from 'app/common/theme';
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: fontSize.extraMedium,
+    fontSize: FontSize.extraMedium,
     color: colors.black,
     fontWeight: 'bold',
     textAlign: 'center',

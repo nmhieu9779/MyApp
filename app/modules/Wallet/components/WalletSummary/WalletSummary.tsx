@@ -3,13 +3,13 @@ import {StyleSheet, View} from 'react-native';
 import {VictoryPie} from 'victory-native';
 
 import {Card, RCText} from 'app/component';
-import {colors, fontSize} from 'app/common/theme';
+import {colors, FontSize} from 'app/common/theme';
 import {useAppTranslation} from 'app/hooks';
 import {LocaleNamespace} from 'app/constants/localeNamespace';
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: fontSize.small,
+    fontSize: FontSize.small,
     fontWeight: 'bold',
   },
   container: {

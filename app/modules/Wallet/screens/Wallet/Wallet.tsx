@@ -1,8 +1,11 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {StyleSheet, SafeAreaView} from 'react-native';
 
-import {WalletExpenses, WalletSummary} from 'app/modules/Wallet/components';
+import {
+  WalletExpenses,
+  WalletSummary,
+  WalletTransactions,
+} from 'app/modules/Wallet/components';
 import {RCList} from 'app/component';
 
 const styles = StyleSheet.create({
@@ -17,6 +20,7 @@ const Wallet = () => {
       <RCList.ScrollView>
         <WalletSummary />
         <WalletExpenses />
+        <WalletTransactions />
       </RCList.ScrollView>
     </SafeAreaView>
   );

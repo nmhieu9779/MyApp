@@ -5,7 +5,7 @@ import ReactNativeModal from 'react-native-modal';
 import {RCButton} from '../RCButton';
 import {RCText} from '../RCText';
 import {ButtonColorType, ButtonType} from 'app/type';
-import {colors, fontFamily, fontSize} from 'app/common/theme';
+import {colors, FontFamily, FontSize} from 'app/common/theme';
 import {useAppAlert, useAppSelector} from 'app/hooks';
 import {selectAlert} from 'app/common/selectors';
 
@@ -16,12 +16,12 @@ const style = StyleSheet.create({
     padding: 10,
   },
   title: {
-    fontFamily: fontFamily.robotoBold,
-    fontSize: fontSize.medium,
+    fontFamily: FontFamily.robotoBold,
+    fontSize: FontSize.medium,
     marginBottom: 7,
   },
   message: {
-    fontSize: fontSize.small,
+    fontSize: FontSize.small,
     marginBottom: 7,
   },
   groupButton: {
