@@ -2,5 +2,6 @@
   "SummaryTitle": "Summary",
   "Income": "Income",
   "Expenses": "Expenses",
-  "Total": "Total"
+  "Total": "Total",
+  "ExpensesTitle": "Expenses - Last 7 days"
 }
