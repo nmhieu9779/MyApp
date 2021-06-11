@@ -1,3 +1,5 @@
 export enum LocaleNamespace {
-  TEST_CONFIG = 'testConfig',
+  TEST_CONFIG = 'TEST_CONFIG',
+  DEFAULT = 'DEFAULT',
+  WALLET = 'WALLET',
 }

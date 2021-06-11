@@ -1,6 +1,5 @@
-import React, {useCallback, useLayoutEffect} from 'react';
+import React, {useCallback} from 'react';
 import {Pressable, SafeAreaView} from 'react-native';
-import {useNavigation} from '@react-navigation/core';
 
 import {RCButton, RCText} from 'app/component';
 import {
@@ -17,13 +16,6 @@ import {selectLoadingStatus} from 'app/common/selectors';
 const TestConfigScreen = () => {
   const dispatch = useAppDispatch();
   const translate = useAppTranslation(LocaleNamespace.TEST_CONFIG);
-  const navigation = useNavigation();
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerTitle: translate('title'),
-    });
-  }, [navigation, translate]);
 
   const abc = useAppSelector(selectData);
   const loading = useAppSelector(

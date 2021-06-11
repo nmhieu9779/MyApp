@@ -31,6 +31,8 @@ export interface Colors {
   readonly disabled: string;
   readonly disabledText: string;
   readonly divider: string;
+  readonly income: string;
+  readonly expenses: string;
   readonly platform: {
     ios: PlatformColors;
     android: PlatformColors;
@@ -59,6 +61,8 @@ const colors: Colors = Object.freeze({
   warning: '#faad14',
   disabled: 'hsl(208, 8%, 90%)',
   disabledText: '#ADB1B2',
+  income: '#72AA62',
+  expenses: '#FF685E',
   // Darker color if hairlineWidth is not thin enough
   divider: StyleSheet.hairlineWidth < 1 ? '#bcbbc1' : 'rgba(0, 0, 0, 0.12)',
   platform: {
