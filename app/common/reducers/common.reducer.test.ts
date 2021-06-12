@@ -1,15 +1,15 @@
 import {hideAlert, showAlert} from '../actions';
-import {commonReducer, initialState} from './common.reducer';
+import {commonReducer, initialCommonState} from './common.reducer';
 
 describe('common reducer', () => {
   it('show alert', () => {
     expect(
       commonReducer(
-        initialState,
+        initialCommonState,
         showAlert({message: 'message', title: 'title'}),
       ),
     ).toEqual({
-      ...initialState,
+      ...initialCommonState,
       alert: {
         title: 'title',
         message: 'message',
@@ -19,12 +19,14 @@ describe('common reducer', () => {
   });
 
   it('hide alert', () => {
-    expect(commonReducer(initialState, hideAlert())).toEqual(initialState);
+    expect(commonReducer(initialCommonState, hideAlert())).toEqual(
+      initialCommonState,
+    );
   });
 
   it('loading status', () => {
-    expect(commonReducer(initialState, {type: 'ABC_REQUEST'})).toEqual({
-      ...initialState,
+    expect(commonReducer(initialCommonState, {type: 'ABC_REQUEST'})).toEqual({
+      ...initialCommonState,
       loadingStatus: {
         ABC_REQUEST: true,
       },
@@ -33,7 +35,7 @@ describe('common reducer', () => {
     expect(
       commonReducer(
         {
-          ...initialState,
+          ...initialCommonState,
           loadingStatus: {
             ABC_REQUEST: true,
           },
@@ -41,7 +43,7 @@ describe('common reducer', () => {
         {type: 'ABC_SUCCESS'},
       ),
     ).toEqual({
-      ...initialState,
+      ...initialCommonState,
       loadingStatus: {
         ABC_REQUEST: false,
       },
@@ -50,7 +52,7 @@ describe('common reducer', () => {
     expect(
       commonReducer(
         {
-          ...initialState,
+          ...initialCommonState,
           loadingStatus: {
             ABC_REQUEST: true,
           },
@@ -58,7 +60,7 @@ describe('common reducer', () => {
         {type: 'ABC_ERROR'},
       ),
     ).toEqual({
-      ...initialState,
+      ...initialCommonState,
       loadingStatus: {
         ABC_REQUEST: false,
       },
