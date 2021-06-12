@@ -7,7 +7,7 @@ const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
   version: 1,
-  whitelist: ['testConfigState'],
+  whitelist: ['testConfigState', 'appDataState'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

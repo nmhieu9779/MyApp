@@ -19,7 +19,7 @@ interface CommonState {
   };
 }
 
-const initialState = {
+const initialCommonState = {
   alert: {
     isVisible: false,
     title: '',
@@ -28,12 +28,12 @@ const initialState = {
   loadingStatus: {},
 } as CommonState;
 
-const commonReducer = createReducer(initialState, builder => {
+const commonReducer = createReducer(initialCommonState, builder => {
   builder.addCase(showAlert, (state, action) => {
     state.alert = _.merge(state.alert, action.payload, {isVisible: true});
   });
   builder.addCase(hideAlert, state => {
-    state.alert = initialState.alert;
+    state.alert = initialCommonState.alert;
   });
   builder.addMatcher(
     action => {
@@ -58,4 +58,4 @@ const commonReducer = createReducer(initialState, builder => {
   );
 });
 
-export {commonReducer, initialState};
+export {commonReducer, initialCommonState};

@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {Pressable, SafeAreaView} from 'react-native';
+import {Pressable, SafeAreaView, StyleSheet} from 'react-native';
 
 import {RCButton, RCText} from 'app/component';
 import {
@@ -12,6 +12,15 @@ import {setDataRequest, TestConfigAction} from 'app/modules/TestConfig/actions';
 import {selectData} from 'app/modules/TestConfig/selectors';
 import {LocaleNamespace} from 'app/constants/localeNamespace';
 import {selectLoadingStatus} from 'app/common/selectors';
+import {setAppLanguage} from 'app/common/actions';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+});
 
 const TestConfigScreen = () => {
   const dispatch = useAppDispatch();
@@ -34,11 +43,24 @@ const TestConfigScreen = () => {
     );
   }, [showAlert]);
 
+  const onChangeLng = useCallback(
+    lng => {
+      dispatch(setAppLanguage(lng));
+    },
+    [dispatch],
+  );
+
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Pressable onPress={onPress}>
         <RCText>{loading ? 'loading' : abc || translate('title')}</RCText>
         <RCButton title={'Show alert'} onPress={onOpenAlert} />
+        <RCButton
+          title={'Tiếng việt'}
+          onPress={onChangeLng}
+          callbackData={'vi'}
+        />
+        <RCButton title={'English'} onPress={onChangeLng} callbackData={'en'} />
       </Pressable>
     </SafeAreaView>
   );

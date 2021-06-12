@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {memo, useCallback} from 'react';
 import {
   Pressable,
   PressableProps,
@@ -32,11 +32,21 @@ type Props = {
   buttonStyle?: StyleProp<ViewStyle>;
 
   titleStyle?: StyleProp<TextStyle>;
+
+  callbackData?: any;
 };
 
 const RCButton = (props: PressableProps & Props) => {
-  const {title, type, colorType, disabled, buttonStyle, titleStyle, onPress} =
-    props;
+  const {
+    title,
+    type,
+    colorType,
+    disabled,
+    buttonStyle,
+    titleStyle,
+    callbackData,
+    onPress,
+  } = props;
 
   const pressableStyle = StyleSheet.flatten([
     styles.defaultButtonStyle,
@@ -73,8 +83,12 @@ const RCButton = (props: PressableProps & Props) => {
     titleStyle,
   ]);
 
+  const onCallbackData = useCallback(() => {
+    onPress && onPress(callbackData);
+  }, [onPress, callbackData]);
+
   return (
-    <Pressable style={pressableStyle} onPress={onPress}>
+    <Pressable style={pressableStyle} onPress={onCallbackData}>
       <RCText style={textStyle}>{title}</RCText>
     </Pressable>
   );

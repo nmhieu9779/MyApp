@@ -7,17 +7,24 @@ import EntypoIcons from 'react-native-vector-icons/Entypo';
 import {TestConfigScreen} from 'app/modules/TestConfig/screens';
 import {ScreenName} from 'app/constants/screenName';
 import {WalletNavigator} from 'app/modules/Wallet/navigation';
-import {useAppTranslation} from 'app/hooks';
+import {selectAppLanguage} from 'app/common/selectors';
+import {useAppSelector, useAppTranslation} from 'app/hooks';
 import {LocaleNamespace} from 'app/constants/localeNamespace';
+import I18n from 'app/i18Next';
 
 const Tab = createBottomTabNavigator();
 
 const RootNavigation = () => {
   const translate = useAppTranslation(LocaleNamespace.DEFAULT);
+  const lng = useAppSelector(selectAppLanguage);
 
   useEffect(() => {
     RNBootSplash.hide({fade: true});
   }, []);
+
+  useEffect(() => {
+    I18n.changeLanguage(lng);
+  }, [lng]);
 
   return (
     <Tab.Navigator>
