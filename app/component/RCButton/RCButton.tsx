@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  title: string;
+  title?: string;
 
   type: ButtonType;
 
@@ -45,6 +45,7 @@ const RCButton = (props: PressableProps & Props) => {
     buttonStyle,
     titleStyle,
     callbackData,
+    children,
     onPress,
   } = props;
 
@@ -89,7 +90,7 @@ const RCButton = (props: PressableProps & Props) => {
 
   return (
     <Pressable style={pressableStyle} onPress={onCallbackData}>
-      <RCText style={textStyle}>{title}</RCText>
+      {children || <RCText style={textStyle}>{title}</RCText>}
     </Pressable>
   );
 };

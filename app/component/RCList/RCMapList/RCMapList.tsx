@@ -1,7 +1,7 @@
 import React, {ReactNode, useCallback} from 'react';
 
 type Props = {
-  idName: string;
+  idName?: string;
 
   data: Array<any>;
 
@@ -12,7 +12,7 @@ const RCMapList = (props: Props): JSX.Element => {
   const {idName, renderItem, data} = props;
 
   const keyExtractor = useCallback(
-    (item, index) => `${item[idName]}-${index}`,
+    (item, index) => `${item[`${idName}`] || item}-${index}`,
     [idName],
   );
 

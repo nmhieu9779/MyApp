@@ -1,3 +1,5 @@
 export enum ScreenName {
   TEST_CONFIG = 'TEST_CONFIG',
+  WALLET = 'WALLET',
+  TRANSACTION_ICONS = 'TRANSACTION_ICONS',
 }
