@@ -3,3 +3,4 @@ export * from './RCText';
 export * from './RCButton';
 export * from './Card';
 export * from './RCList';
+export * from './RCIcon';

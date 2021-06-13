@@ -1,10 +1,9 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import moment from 'moment';
 
-import {RCText} from 'app/component';
-import {colors, FontSize} from 'app/common/theme';
+import {RCText, RCIcon} from 'app/component';
+import {assets, colors, FontSize} from 'app/common/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -36,17 +35,14 @@ const WalletTransactionItem = (props: any) => {
 
   return (
     <View style={styles.container}>
-      <MaterialIcons
-        name={'category'}
-        size={40}
-        style={StyleSheet.flatten([
-          styles.icon,
-          {
-            backgroundColor:
-              transactionType === 'income' ? colors.income : colors.expenses,
-          },
-        ])}
-        color={colors.white}
+      <RCIcon
+        source={assets.budget.publicTransport}
+        container={40}
+        type={'circle'}
+        containerStyle={{
+          backgroundColor:
+            transactionType === 'income' ? colors.income : colors.expenses,
+        }}
       />
       <View style={styles.nameContainer}>
         <RCText fontWeight={'400'} fontSize={FontSize.large}>
