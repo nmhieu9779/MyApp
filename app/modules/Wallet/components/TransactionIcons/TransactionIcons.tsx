@@ -23,7 +23,7 @@ const TransactionIcons = () => {
   const navigation = useNavigation();
 
   const onPress = useCallback(
-    item => {
+    (item: BudgetIconsName) => {
       params.onCallback(item);
       navigation.goBack();
     },

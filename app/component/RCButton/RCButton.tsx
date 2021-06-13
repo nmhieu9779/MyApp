@@ -1,17 +1,19 @@
 import React, {memo, useCallback} from 'react';
 import {
   Pressable,
-  PressableProps,
   StyleProp,
   StyleSheet,
   ViewStyle,
   Platform,
   TextStyle,
+  ViewProps,
+  AccessibilityProps,
 } from 'react-native';
 
 import {RCText} from '../RCText';
 import {colors} from 'app/common/theme';
 import {ButtonColorType, ButtonType} from 'app/type';
+import {ReactNode} from 'react';
 
 const styles = StyleSheet.create({
   defaultButtonStyle: {
@@ -34,9 +36,15 @@ type Props = {
   titleStyle?: StyleProp<TextStyle>;
 
   callbackData?: any;
+
+  onPress: (data: any) => void;
+
+  children: ReactNode;
 };
 
-const RCButton = (props: PressableProps & Props) => {
+const RCButton = (
+  props: AccessibilityProps & Omit<ViewProps, 'style' | 'hitSlop'> & Props,
+) => {
   const {
     title,
     type,
