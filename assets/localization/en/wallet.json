@@ -4,5 +4,8 @@
   "Expenses": "Expenses",
   "Total": "Total",
   "ExpensesTitle": "Expenses - Last 7 days",
-  "TransactionsTitle": "Transactions"
+  "TransactionsTitle": "Transactions",
+  "AmountTitle": "Amount",
+  "SelectCategoryTitle": "Select category",
+  "NoteTitle": "Note"
 }

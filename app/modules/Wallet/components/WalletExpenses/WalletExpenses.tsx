@@ -1,6 +1,7 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {StyleSheet} from 'react-native';
 import {VictoryAxis, VictoryBar, VictoryChart} from 'victory-native';
+import ContentLoader from 'react-native-easy-content-loader';
 
 import {Card} from 'app/component';
 import {colors} from 'app/common/theme';
@@ -19,6 +20,14 @@ const WalletExpenses = () => {
   const {windowWidth, fontScale} = useAppDimensions();
   const translate = useAppTranslation(LocaleNamespace.WALLET);
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
   const data = [
     {y: 200000, x: '05/06'},
     {y: 500000, x: '06/06'},
@@ -31,20 +40,22 @@ const WalletExpenses = () => {
   return (
     <Card borderRadius={5}>
       <Card.Title>{translate('ExpensesTitle')}</Card.Title>
-      <VictoryChart
-        height={200}
-        width={windowWidth + windowWidth * (1 - fontScale)}
-        domainPadding={19}
-        style={{parent: styles.chartContainer}}>
-        <VictoryAxis />
-        <VictoryBar
-          data={data}
-          labels={[200, 500, 0, 100, 123, 432, 123]}
-          barWidth={40}
-          style={{data: {fill: colors.expenses}}}
-          cornerRadius={3}
-        />
-      </VictoryChart>
+      <ContentLoader loading={loading}>
+        <VictoryChart
+          height={200}
+          width={windowWidth + windowWidth * (1 - fontScale)}
+          domainPadding={19}
+          style={{parent: styles.chartContainer}}>
+          <VictoryAxis />
+          <VictoryBar
+            data={data}
+            labels={[200, 500, 0, 100, 123, 432, 123]}
+            barWidth={40}
+            style={{data: {fill: colors.expenses}}}
+            cornerRadius={3}
+          />
+        </VictoryChart>
+      </ContentLoader>
     </Card>
   );
 };

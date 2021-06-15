@@ -1,6 +1,6 @@
 import React, {memo, useCallback} from 'react';
 import {
-  Pressable,
+  TouchableOpacity,
   StyleProp,
   StyleSheet,
   ViewStyle,
@@ -39,7 +39,7 @@ type Props = {
 
   onPress: (data: any) => void;
 
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 const RCButton = (
@@ -97,9 +97,12 @@ const RCButton = (
   }, [onPress, callbackData]);
 
   return (
-    <Pressable style={pressableStyle} onPress={onCallbackData}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={pressableStyle}
+      onPress={onCallbackData}>
       {children || <RCText style={textStyle}>{title}</RCText>}
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

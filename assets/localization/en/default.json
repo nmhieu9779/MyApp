@@ -1,3 +1,5 @@
 {
-  "walletBottom": "Wallet"
+  "walletBottom": "Wallet",
+  "WalletTitle": "Expense Manager",
+  "AddTransactionTitle": "Add Transaction"
 }

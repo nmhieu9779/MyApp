@@ -4,5 +4,8 @@
   "Expenses": "Chi phí",
   "Total": "Tổng cộng",
   "ExpensesTitle": "Các chi phí - 7 ngày qua",
-  "TransactionsTitle": "Các giao dịch"
+  "TransactionsTitle": "Các giao dịch",
+  "AmountTitle": "Số tiền",
+  "SelectCategoryTitle": "Chọn nhóm",
+  "NoteTitle": "Ghi chú"
 }
