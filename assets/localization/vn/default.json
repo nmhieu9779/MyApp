@@ -1,5 +1,7 @@
 {
   "walletBottom": "Ví",
-  "WalletTitle": "Quản lý chi tiêu",
-  "AddTransactionTitle": "Thêm giao dịch"
+  "WalletTitle": "Quản Lý Chi Tiêu",
+  "AddTransactionTitle": "Thêm Giao Dịch",
+  "SelectCategoryTitle": "Chọn Nhóm",
+  "AddCategoryTitle": "Nhóm Mới"
 }

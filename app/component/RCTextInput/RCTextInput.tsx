@@ -50,6 +50,7 @@ const RCTextInput = (props: TextInputProps & Props) => {
         fontWeight && {fontWeight},
         style,
       ])}
+      placeholderTextColor={colors.grey3}
       {...textInputProps}
     />
   );

@@ -8,5 +8,7 @@
   "AmountTitle": "Amount",
   "SelectCategoryTitle": "Select category",
   "NoteTitle": "Note",
-  "NewCategory": "New category"
+  "NewCategory": "New category",
+  "CategoryName": "Category Name",
+  "Expense/Income": "Expense/Income"
 }

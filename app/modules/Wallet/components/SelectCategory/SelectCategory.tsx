@@ -87,10 +87,8 @@ const SelectCategory = () => {
   );
 
   const onAddNewCategory = useCallback(() => {
-    navigation.navigate(ScreenName.TRANSACTION_ICONS, {
-      onCallback: () => {},
-    });
-  }, [navigation]);
+    navigation.navigate(ScreenName.ADD_CATEGORY, {categoryType: selected});
+  }, [navigation, selected]);
 
   const ListFooterComponent = useCallback(
     () => (

@@ -8,5 +8,7 @@
   "AmountTitle": "Số tiền",
   "SelectCategoryTitle": "Chọn nhóm",
   "NoteTitle": "Ghi chú",
-  "NewCategory": "Nhóm mới"
+  "NewCategory": "Nhóm mới",
+  "CategoryName": "Tên nhóm",
+  "Expense/Income": "Khoản thu/Khoản chi"
 }

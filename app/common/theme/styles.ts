@@ -11,6 +11,9 @@ const Styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  flexRow: {
+    flexDirection: 'row',
+  },
 });
 
 export {Styles};

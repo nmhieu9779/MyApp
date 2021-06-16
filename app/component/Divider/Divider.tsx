@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
 
 import {colors} from 'app/common/theme';
@@ -51,4 +51,4 @@ Divider.defaultProps = {
   size: 1,
 };
 
-export default Divider;
+export default memo(Divider);
