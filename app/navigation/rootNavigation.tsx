@@ -5,11 +5,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import EntypoIcons from 'react-native-vector-icons/Entypo';
 
 import {TestConfigScreen} from 'app/modules/TestConfig/screens';
-import {ScreenName} from 'app/constants/screenName';
+import {ScreenName, LocaleNamespace} from 'app/constants';
 import {WalletNavigator} from 'app/modules/Wallet/navigation';
 import {selectAppLanguage} from 'app/common/selectors';
 import {useAppSelector, useAppTranslation} from 'app/hooks';
-import {LocaleNamespace} from 'app/constants/localeNamespace';
 import I18n from 'app/i18Next';
 
 const Tab = createBottomTabNavigator();

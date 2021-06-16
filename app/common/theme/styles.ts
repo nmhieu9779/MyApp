@@ -7,6 +7,10 @@ const Styles = StyleSheet.create({
   padding0: {
     padding: 0,
   },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export {Styles};

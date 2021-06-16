@@ -14,3 +14,8 @@ export enum ButtonType {
   CLEAR = 'Clear',
   OUTLINE = 'Outline',
 }
+
+export interface GroupButtonItem {
+  title: string;
+  key: string;
+}

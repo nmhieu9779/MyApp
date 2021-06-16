@@ -3,6 +3,7 @@ import {TextInput, View, StyleSheet} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIconsIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import moment from 'moment';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 import {
   RCList,
@@ -13,9 +14,9 @@ import {
   Divider,
 } from 'app/component';
 import {assets, colors, FontSize, Styles} from 'app/common/theme';
-import {ButtonType} from 'app/type';
+import {ButtonType, RootStackParamList} from 'app/type';
 import {useAppTranslation} from 'app/hooks';
-import {LocaleNamespace} from 'app/constants/localeNamespace';
+import {LocaleNamespace, ScreenName} from 'app/constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +41,6 @@ const styles = StyleSheet.create({
   },
   amountInput: {
     marginVertical: 10,
-    width: '100%',
   },
   imageContainer: {
     width: 75,
@@ -51,10 +51,17 @@ const styles = StyleSheet.create({
 const AddTransaction = () => {
   const amountInput = useRef() as React.MutableRefObject<TextInput>;
   const translate = useAppTranslation(LocaleNamespace.WALLET);
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const onAmountPress = useCallback(() => {
     amountInput.current.focus();
   }, []);
+
+  const onSelectCategory = useCallback(() => {
+    navigation.navigate(ScreenName.SELECT_CATEGORY, {
+      onCallback: () => {},
+    });
+  }, [navigation]);
 
   return (
     <RCList.ScrollView>
@@ -88,7 +95,7 @@ const AddTransaction = () => {
         <RCButton
           buttonStyle={styles.groupContainer}
           type={ButtonType.CLEAR}
-          onPress={() => {}}>
+          onPress={onSelectCategory}>
           <View style={styles.imageContainer}>
             <RCIcon source={assets.budget.budget} container={50} size={40} />
           </View>

@@ -10,7 +10,7 @@ import {
 } from 'app/hooks';
 import {setDataRequest, TestConfigAction} from 'app/modules/TestConfig/actions';
 import {selectData} from 'app/modules/TestConfig/selectors';
-import {LocaleNamespace} from 'app/constants/localeNamespace';
+import {LocaleNamespace} from 'app/constants';
 import {selectLoadingStatus} from 'app/common/selectors';
 import {setAppLanguage} from 'app/common/actions';
 

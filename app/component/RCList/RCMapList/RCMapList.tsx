@@ -1,4 +1,4 @@
-import React, {ReactNode, useCallback} from 'react';
+import React, {memo, ReactNode, useCallback} from 'react';
 
 type Props = {
   idName?: string;
@@ -27,4 +27,4 @@ const RCMapList = (props: Props): JSX.Element => {
   return <React.Fragment>{map}</React.Fragment>;
 };
 
-export default RCMapList;
+export default memo(RCMapList);

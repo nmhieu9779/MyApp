@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import moment from 'moment';
 
 import {Card, RCList} from 'app/component';
-import {LocaleNamespace} from 'app/constants/localeNamespace';
+import {LocaleNamespace} from 'app/constants';
 import {useAppTranslation} from 'app/hooks';
 import WalletTransactionItem from './WalletTransactionItem';
 

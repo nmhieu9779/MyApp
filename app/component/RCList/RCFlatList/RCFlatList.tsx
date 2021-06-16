@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {memo, useCallback} from 'react';
 import {FlatList, FlatListProps} from 'react-native';
 
 type Props = {
@@ -16,4 +16,4 @@ const RCFlatList = (props: FlatListProps<any> & Props) => {
   return <FlatList {...flatListProps} keyExtractor={keyExtractor} />;
 };
 
-export default RCFlatList;
+export default memo(RCFlatList);

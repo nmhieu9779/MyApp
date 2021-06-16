@@ -1,4 +1,4 @@
-import {ScreenName} from 'app/constants/screenName';
+import {ScreenName} from 'app/constants';
 
 export type RootStackParamList = {
   [ScreenName.TRANSACTION_ICONS]: {
@@ -8,4 +8,8 @@ export type RootStackParamList = {
   [ScreenName.WALLET]: {};
 
   [ScreenName.ADD_TRANSACTION]: undefined;
+
+  [ScreenName.SELECT_CATEGORY]: {
+    onCallback: (value: string) => void;
+  };
 };

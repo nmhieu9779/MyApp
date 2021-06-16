@@ -7,5 +7,6 @@
   "TransactionsTitle": "Transactions",
   "AmountTitle": "Amount",
   "SelectCategoryTitle": "Select category",
-  "NoteTitle": "Note"
+  "NoteTitle": "Note",
+  "NewCategory": "New category"
 }

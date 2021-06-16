@@ -2,10 +2,9 @@ import React from 'react';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 
 import {WalletScreen, AddTransactionScreen} from '../screens';
-import {TransactionIcons} from '../components';
-import {ScreenName} from 'app/constants/screenName';
+import {TransactionIcons, SelectCategory} from '../components';
+import {ScreenName, LocaleNamespace} from 'app/constants';
 import {useAppTranslation} from 'app/hooks';
-import {LocaleNamespace} from 'app/constants/localeNamespace';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +32,14 @@ const WalletNavigator = () => {
         name={ScreenName.ADD_TRANSACTION}
         options={{title: translate('AddTransactionTitle')}}
         component={AddTransactionScreen}
+      />
+      <Stack.Screen
+        name={ScreenName.SELECT_CATEGORY}
+        options={{
+          title: translate('AddTransactionTitle'),
+          ...TransitionPresets.ModalTransition,
+        }}
+        component={SelectCategory}
       />
     </Stack.Navigator>
   );

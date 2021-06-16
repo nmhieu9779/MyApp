@@ -1,6 +1,6 @@
 import I18n from 'i18next';
 
-import {LocaleNamespace} from 'app/constants/localeNamespace';
+import {LocaleNamespace} from 'app/constants';
 import {initReactI18next} from 'react-i18next';
 import {store} from 'app/store';
 

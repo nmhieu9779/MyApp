@@ -6,7 +6,7 @@ import {RCList, RCIcon, RCButton} from 'app/component';
 import {assets} from 'app/common/theme';
 import {BudgetIconsName} from 'app/common/theme/budgetAssets';
 import {ButtonType, RootStackParamList} from 'app/type';
-import {ScreenName} from 'app/constants/screenName';
+import {ScreenName} from 'app/constants';
 
 const styles = StyleSheet.create({
   iconContainer: {

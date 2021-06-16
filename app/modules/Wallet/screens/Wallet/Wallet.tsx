@@ -10,7 +10,7 @@ import {
 import {RCList, RCButton, RCIcon} from 'app/component';
 import {ButtonType, RootStackParamList} from 'app/type';
 import {assets} from 'app/common/theme';
-import {ScreenName} from 'app/constants/screenName';
+import {ScreenName} from 'app/constants';
 
 const styles = StyleSheet.create({
   container: {

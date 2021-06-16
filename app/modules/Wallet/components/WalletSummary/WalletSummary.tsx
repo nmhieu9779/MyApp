@@ -6,7 +6,7 @@ import ContentLoader from 'react-native-easy-content-loader';
 import {Card, RCText} from 'app/component';
 import {colors, FontSize} from 'app/common/theme';
 import {useAppTranslation} from 'app/hooks';
-import {LocaleNamespace} from 'app/constants/localeNamespace';
+import {LocaleNamespace} from 'app/constants';
 
 const styles = StyleSheet.create({
   title: {

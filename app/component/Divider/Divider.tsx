@@ -38,7 +38,9 @@ const Divider = (props: Props) => {
           styles.root,
           style,
           {height: size},
-          !!width && {width: width > 0 ? width : +windowWidth + +width},
+          width
+            ? {width: width > 0 ? width : +windowWidth + +width}
+            : {width: windowWidth},
         ])}
       />
     </View>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {ReactNode} from 'react';
 import {ScrollView, ScrollViewProps} from 'react-native';
 
@@ -12,4 +12,4 @@ const RCScrollView = (props: ScrollViewProps & Props) => {
   return <ScrollView {...scrollViewProps}>{children}</ScrollView>;
 };
 
-export default RCScrollView;
+export default memo(RCScrollView);

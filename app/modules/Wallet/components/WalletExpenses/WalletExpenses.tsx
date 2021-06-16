@@ -6,7 +6,7 @@ import ContentLoader from 'react-native-easy-content-loader';
 import {Card} from 'app/component';
 import {colors} from 'app/common/theme';
 import {useAppTranslation, useAppDimensions} from 'app/hooks';
-import {LocaleNamespace} from 'app/constants/localeNamespace';
+import {LocaleNamespace} from 'app/constants';
 
 const styles = StyleSheet.create({
   chartContainer: {
