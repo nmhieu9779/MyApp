@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useLayoutEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {
   NavigationProp,
@@ -7,6 +7,7 @@ import {
   useRoute,
 } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Foundation from 'react-native-vector-icons/Foundation';
 
 import {assets, colors, FontSize, Styles} from 'app/common/theme';
 import {
@@ -55,6 +56,9 @@ const styles = StyleSheet.create({
     marginRight: 20,
     alignItems: 'center',
   },
+  buttonSave: {
+    marginRight: 5,
+  },
 });
 
 const AddCategory = () => {
@@ -65,7 +69,24 @@ const AddCategory = () => {
 
   const [selected, setSelected] = useState<CategoryType>(params?.categoryType);
   const [icon, setIcon] = useState<BudgetIconsName>('wallet');
-  const [categoryName, setCategoryName] = useState('');
+  const [categoryName, setCategoryName] = useState<string>('');
+
+  const onSave = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <RCButton
+          buttonStyle={styles.buttonSave}
+          type={ButtonType.CLEAR}
+          onPress={onSave}>
+          <Foundation name={'save'} size={30} color={colors.primary} />
+        </RCButton>
+      ),
+    });
+  }, [navigation, onSave]);
 
   const onChange = useCallback(item => {
     setSelected(item);

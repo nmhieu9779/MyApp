@@ -1,4 +1,4 @@
-import {defaultState} from 'app/mocks/defaultState';
+import {defaultState} from 'app/mocks';
 import {selectAlert, selectLoadingStatus} from './common.selector';
 
 describe('common selector', () => {

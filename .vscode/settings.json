@@ -5,6 +5,7 @@
     "Pressable",
     "middlewares",
     "persistor",
-    "reduxjs"
+    "reduxjs",
+    "rehydrated"
   ]
 }

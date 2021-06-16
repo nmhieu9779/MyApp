@@ -1,4 +1,4 @@
-import {defaultState} from 'app/mocks/defaultState';
+import {defaultState} from 'app/mocks';
 import {selectData} from './testConfig.selector';
 
 describe('testConfig selector', () => {

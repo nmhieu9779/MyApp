@@ -1,6 +1,7 @@
 {
   "walletBottom": "Wallet",
   "WalletTitle": "Expense Manager",
+  "TransactionIcons": "Select Icon",
   "AddTransactionTitle": "Add Transaction",
   "SelectCategoryTitle": "Select Category",
   "AddCategoryTitle": "New Category"

@@ -1,1 +1,1 @@
-export * from './walletNaviagtion';
+export * from './walletNavigation';

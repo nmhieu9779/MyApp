@@ -1,4 +1,4 @@
-import {defaultState} from 'app/mocks/defaultState';
+import {defaultState} from 'app/mocks';
 import {selectAppLanguage} from './appData.selector';
 
 describe('appData selector', () => {

@@ -18,19 +18,16 @@ const WalletNavigator = () => {
       }}>
       <Stack.Screen
         name={ScreenName.WALLET}
-        component={WalletScreen}
-        options={{title: translate('WalletTitle')}}
-      />
-      <Stack.Screen
-        name={ScreenName.TRANSACTION_ICONS}
-        component={TransactionIcons}
         options={{
-          ...TransitionPresets.ModalTransition,
+          title: translate('WalletTitle'),
         }}
+        component={WalletScreen}
       />
       <Stack.Screen
         name={ScreenName.ADD_TRANSACTION}
-        options={{title: translate('AddTransactionTitle')}}
+        options={{
+          title: translate('AddTransactionTitle'),
+        }}
         component={AddTransactionScreen}
       />
       <Stack.Screen
@@ -48,6 +45,14 @@ const WalletNavigator = () => {
           ...TransitionPresets.ModalTransition,
         }}
         component={AddCategory}
+      />
+      <Stack.Screen
+        name={ScreenName.TRANSACTION_ICONS}
+        options={{
+          title: translate('TransactionIcons'),
+          ...TransitionPresets.ModalTransition,
+        }}
+        component={TransactionIcons}
       />
     </Stack.Navigator>
   );
