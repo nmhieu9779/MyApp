@@ -24,6 +24,8 @@ type Props = {
   fontFamily?: FontFamily;
 
   color?: string;
+
+  placeholder?: string;
 };
 
 const RCText = (props: TextProps & Props) => {
@@ -35,6 +37,7 @@ const RCText = (props: TextProps & Props) => {
     fontSize,
     fontFamily,
     color,
+    placeholder,
     ...textProps
   } = props;
 
@@ -44,10 +47,11 @@ const RCText = (props: TextProps & Props) => {
         {fontSize, fontFamily, color},
         bold && {fontWeight: 'bold'},
         fontWeight && {fontWeight},
+        {color: !children && placeholder ? colors.grey3 : color},
         style,
       ])}
       {...textProps}>
-      {children}
+      {children || placeholder}
     </Text>
   );
 };
@@ -55,7 +59,7 @@ const RCText = (props: TextProps & Props) => {
 RCText.defaultProps = {
   fontSize: FontSize.medium,
   fontFamily: FontFamily.robotoRegular,
-  colors: colors.black,
+  color: colors.black,
 };
 
 export default memo(RCText);

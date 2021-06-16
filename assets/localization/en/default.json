@@ -4,5 +4,6 @@
   "TransactionIcons": "Select Icon",
   "AddTransactionTitle": "Add Transaction",
   "SelectCategoryTitle": "Select Category",
-  "AddCategoryTitle": "New Category"
+  "AddCategoryTitle": "New Category",
+  "Note": "Note"
 }

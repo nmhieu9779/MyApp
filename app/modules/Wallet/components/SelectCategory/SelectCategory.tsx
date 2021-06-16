@@ -68,17 +68,21 @@ const SelectCategory = () => {
     title: string;
     key: string;
   }> = useCallback(
-    ({item: {icon, title, key}, index}) => (
+    ({item, index}) => (
       <React.Fragment>
         <RCButton
           buttonStyle={styles.itemContainer}
           type={ButtonType.CLEAR}
-          callbackData={key}
+          callbackData={item}
           onPress={onPress}>
           <View style={styles.imageContainer}>
-            <RCIcon source={assets.budget[icon]} container={50} size={40} />
+            <RCIcon
+              source={assets.budget[item.icon]}
+              container={50}
+              size={40}
+            />
           </View>
-          <RCText style={Styles.flex1}>{title}</RCText>
+          <RCText style={Styles.flex1}>{item.title}</RCText>
         </RCButton>
         <Divider size={0.5} width={index === 1 ? undefined : -80} right />
       </React.Fragment>

@@ -10,5 +10,7 @@
   "NoteTitle": "Note",
   "NewCategory": "New category",
   "CategoryName": "Category Name",
-  "Expense/Income": "Expense/Income"
+  "Expense/Income": "Expense/Income",
+  "EnterNote": "Enter note",
+  "Suggestion": "Suggestion"
 }

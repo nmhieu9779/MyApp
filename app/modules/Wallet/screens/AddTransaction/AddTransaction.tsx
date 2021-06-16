@@ -1,4 +1,4 @@
-import React, {useRef, useCallback} from 'react';
+import React, {useRef, useCallback, useState} from 'react';
 import {TextInput, View, StyleSheet} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIconsIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,6 +17,7 @@ import {assets, colors, FontSize, Styles} from 'app/common/theme';
 import {ButtonType, RootStackParamList} from 'app/type';
 import {useAppTranslation} from 'app/hooks';
 import {LocaleNamespace, ScreenName} from 'app/constants';
+import {BudgetIconsName} from 'app/common/theme/budgetAssets';
 
 const styles = StyleSheet.create({
   container: {
@@ -53,15 +54,29 @@ const AddTransaction = () => {
   const translate = useAppTranslation(LocaleNamespace.WALLET);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
+  const [note, setNote] = useState<string>('');
+  const [category, setCategory] = useState<{
+    icon: BudgetIconsName;
+    title: string;
+    key: string;
+  }>({key: '', title: '', icon: 'wallet'});
+
   const onAmountPress = useCallback(() => {
     amountInput.current.focus();
   }, []);
 
   const onSelectCategory = useCallback(() => {
     navigation.navigate(ScreenName.SELECT_CATEGORY, {
-      onCallback: () => {},
+      onCallback: data => setCategory(data),
     });
   }, [navigation]);
+
+  const onNavigateNote = useCallback(() => {
+    navigation.navigate(ScreenName.NOTE, {
+      note,
+      onCallback: text => setNote(text),
+    });
+  }, [navigation, note]);
 
   return (
     <RCList.ScrollView>
@@ -97,10 +112,17 @@ const AddTransaction = () => {
           type={ButtonType.CLEAR}
           onPress={onSelectCategory}>
           <View style={styles.imageContainer}>
-            <RCIcon source={assets.budget.budget} container={50} size={40} />
+            <RCIcon
+              source={assets.budget[category.icon]}
+              container={50}
+              size={40}
+            />
           </View>
-          <RCText style={Styles.flex1} fontSize={FontSize.big}>
-            {translate('SelectCategoryTitle')}
+          <RCText
+            style={Styles.flex1}
+            fontSize={FontSize.big}
+            placeholder={translate('SelectCategoryTitle')}>
+            {category.title}
           </RCText>
           <FeatherIcon
             name={'chevron-right'}
@@ -112,7 +134,7 @@ const AddTransaction = () => {
         <RCButton
           buttonStyle={styles.groupContainer}
           type={ButtonType.CLEAR}
-          onPress={() => {}}>
+          onPress={onNavigateNote}>
           <View style={styles.imageContainer}>
             <MaterialCommunityIconsIcon
               name={'text'}
@@ -120,7 +142,9 @@ const AddTransaction = () => {
               color={colors.grey3}
             />
           </View>
-          <RCText style={Styles.flex1}>{translate('NoteTitle')}</RCText>
+          <RCText style={Styles.flex1} placeholder={translate('NoteTitle')}>
+            {note}
+          </RCText>
           <FeatherIcon
             name={'chevron-right'}
             size={FontSize.large}

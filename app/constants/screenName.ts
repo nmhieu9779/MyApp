@@ -5,6 +5,7 @@ enum ScreenName {
   ADD_TRANSACTION = 'ADD_TRANSACTION',
   SELECT_CATEGORY = 'SELECT_CATEGORY',
   ADD_CATEGORY = 'ADD_CATEGORY',
+  NOTE = 'NOTE',
 }
 
 export {ScreenName};

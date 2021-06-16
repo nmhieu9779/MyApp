@@ -12,10 +12,19 @@ export type RootStackParamList = {
   [ScreenName.ADD_TRANSACTION]: undefined;
 
   [ScreenName.SELECT_CATEGORY]: {
-    onCallback: (value: string) => void;
+    onCallback: (data: {
+      icon: BudgetIconsName;
+      title: string;
+      key: string;
+    }) => void;
   };
 
   [ScreenName.ADD_CATEGORY]: {
     categoryType: CategoryType;
+  };
+
+  [ScreenName.NOTE]: {
+    onCallback: (value: string) => void;
+    note: string;
   };
 };
