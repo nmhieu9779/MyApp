@@ -61,6 +61,7 @@ const AddTransaction = () => {
     title: string;
     key: string;
   }>({key: '', title: '', icon: 'wallet'});
+  const [date, setDate] = useState<Date>(new Date());
 
   const onAmountPress = useCallback(() => {
     amountInput.current.focus();
@@ -80,8 +81,10 @@ const AddTransaction = () => {
   }, [navigation, note]);
 
   const onSelectDate = useCallback(() => {
-    openDateTimePicker(() => {});
-  }, [openDateTimePicker]);
+    openDateTimePicker(date, data => {
+      setDate(data);
+    });
+  }, [date, openDateTimePicker]);
 
   return (
     <RCList.ScrollView>
@@ -169,7 +172,7 @@ const AddTransaction = () => {
             />
           </View>
           <RCText style={Styles.flex1}>
-            {moment().format('ddd, DD MMM YYYY')}
+            {moment(date).format('ddd, DD MMM YYYY')}
           </RCText>
           <FeatherIcon
             name={'chevron-right'}

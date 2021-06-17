@@ -29,16 +29,20 @@ const styles = StyleSheet.create({
 });
 
 const DateTimePicker = () => {
-  const {isVisible, onCallback} = useAppSelector(selectDateTimePicker);
+  const {
+    isVisible,
+    date: dateProp,
+    onCallback,
+  } = useAppSelector(selectDateTimePicker);
   const [, closeDateTimePicker] = useDateTimePicker();
 
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     if (isVisible) {
-      setDate(new Date());
+      setDate(dateProp);
     }
-  }, [isVisible]);
+  }, [isVisible, dateProp]);
 
   const onDateChange = useCallback(data => {
     setDate(data);
@@ -58,9 +62,7 @@ const DateTimePicker = () => {
   }, [date, closeDateTimePicker, onCallback]);
 
   return (
-    <ReactNativeModal
-      style={{backgroundColor: colors.transparent}}
-      isVisible={isVisible}>
+    <ReactNativeModal isVisible={isVisible} animationOutTiming={500}>
       <View style={styles.container}>
         <DatePicker date={date} onDateChange={onDateChange} />
         <View style={styles.buttonsContainer}>

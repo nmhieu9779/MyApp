@@ -24,6 +24,7 @@ interface CommonState {
   };
   dateTimePicker: {
     isVisible: boolean;
+    date: Date;
     onCallback: (date: Date) => void;
   };
 }
