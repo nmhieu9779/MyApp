@@ -14,4 +14,9 @@ const selectLoadingStatus = (actionsName: Array<string>) =>
     actionsName.some(actionName => commonState.loadingStatus[actionName]),
   );
 
-export {selectAlert, selectLoadingStatus};
+const selectDateTimePicker = createSelector(
+  selectCommonState,
+  commonState => commonState.dateTimePicker,
+);
+
+export {selectAlert, selectLoadingStatus, selectDateTimePicker};

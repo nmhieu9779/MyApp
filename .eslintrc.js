@@ -25,5 +25,6 @@ module.exports = {
       },
     ],
     'max-len': ['error', {code: 100, ignoreStrings: true}],
+    'no-spaced-func': 0,
   },
 };

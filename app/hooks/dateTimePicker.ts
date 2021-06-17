@@ -1,0 +1,29 @@
+import {useCallback} from 'react';
+
+import {
+  closeDateTimePicker as closeDateTimePickerAction,
+  openDateTimePicker as openDateTimePickerAction,
+} from 'app/common/actions';
+import {useAppDispatch} from './store';
+
+export type OpenDateTimePicker = (onCallback: (date: Date) => void) => void;
+export type CloseDateTimePicker = () => void;
+
+const useDateTimePicker = (): [OpenDateTimePicker, CloseDateTimePicker] => {
+  const dispatch = useAppDispatch();
+
+  const openDateTimePicker: OpenDateTimePicker = useCallback(
+    onCallback => {
+      dispatch(openDateTimePickerAction({onCallback}));
+    },
+    [dispatch],
+  );
+
+  const closeDateTimePicker: CloseDateTimePicker = useCallback(() => {
+    dispatch(closeDateTimePickerAction());
+  }, [dispatch]);
+
+  return [openDateTimePicker, closeDateTimePicker];
+};
+
+export {useDateTimePicker};

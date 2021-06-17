@@ -1,4 +1,9 @@
-import {hideAlert, showAlert} from '../actions';
+import {
+  closeDateTimePicker,
+  hideAlert,
+  openDateTimePicker,
+  showAlert,
+} from '../actions';
 import {commonReducer, initialCommonState} from './common.reducer';
 
 describe('common reducer', () => {
@@ -65,5 +70,24 @@ describe('common reducer', () => {
         ABC_REQUEST: false,
       },
     });
+  });
+
+  const onCallback = jest.fn(date => date);
+  it('open date time picker', () => {
+    expect(
+      commonReducer(initialCommonState, openDateTimePicker({onCallback})),
+    ).toEqual({
+      ...initialCommonState,
+      dateTimePicker: {
+        onCallback,
+        isVisible: true,
+      },
+    });
+  });
+
+  it('close date time picker', () => {
+    expect(commonReducer(initialCommonState, closeDateTimePicker())).toEqual(
+      initialCommonState,
+    );
   });
 });

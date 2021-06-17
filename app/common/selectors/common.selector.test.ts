@@ -1,5 +1,9 @@
 import {defaultState} from 'app/mocks';
-import {selectAlert, selectLoadingStatus} from './common.selector';
+import {
+  selectAlert,
+  selectDateTimePicker,
+  selectLoadingStatus,
+} from './common.selector';
 
 describe('common selector', () => {
   it('selectAlert', () => {
@@ -10,5 +14,11 @@ describe('common selector', () => {
 
   it('selectLoadingStatus', () => {
     expect(selectLoadingStatus(['ABC'])(defaultState)).toStrictEqual(false);
+  });
+
+  it('selectDateTimePicker', () => {
+    expect(selectDateTimePicker(defaultState)).toStrictEqual(
+      defaultState.commonState.dateTimePicker,
+    );
   });
 });

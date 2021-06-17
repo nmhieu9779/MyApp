@@ -15,7 +15,7 @@ import {
 } from 'app/component';
 import {assets, colors, FontSize, Styles} from 'app/common/theme';
 import {ButtonType, RootStackParamList} from 'app/type';
-import {useAppTranslation} from 'app/hooks';
+import {useAppTranslation, useDateTimePicker} from 'app/hooks';
 import {LocaleNamespace, ScreenName} from 'app/constants';
 import {BudgetIconsName} from 'app/common/theme/budgetAssets';
 
@@ -53,6 +53,7 @@ const AddTransaction = () => {
   const amountInput = useRef() as React.MutableRefObject<TextInput>;
   const translate = useAppTranslation(LocaleNamespace.WALLET);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const [openDateTimePicker] = useDateTimePicker();
 
   const [note, setNote] = useState<string>('');
   const [category, setCategory] = useState<{
@@ -77,6 +78,10 @@ const AddTransaction = () => {
       onCallback: text => setNote(text),
     });
   }, [navigation, note]);
+
+  const onSelectDate = useCallback(() => {
+    openDateTimePicker(() => {});
+  }, [openDateTimePicker]);
 
   return (
     <RCList.ScrollView>
@@ -155,7 +160,7 @@ const AddTransaction = () => {
         <RCButton
           buttonStyle={styles.groupContainer}
           type={ButtonType.CLEAR}
-          onPress={() => {}}>
+          onPress={onSelectDate}>
           <View style={styles.imageContainer}>
             <MaterialCommunityIconsIcon
               name={'calendar'}

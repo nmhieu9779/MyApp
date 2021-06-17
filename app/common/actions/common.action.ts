@@ -5,4 +5,15 @@ const hideAlert = createAction('HIDE_ALERT');
 
 const setAppLanguage = createAction<'en' | 'vi'>('SET_APP_LANGUAGE');
 
-export {showAlert, hideAlert, setAppLanguage};
+const openDateTimePicker = createAction<{onCallback: (date: Date) => void}>(
+  'OPEN_DATE_TIME_PICKER',
+);
+const closeDateTimePicker = createAction('CLOSE_DATE_TIME_PICKER');
+
+export {
+  showAlert,
+  hideAlert,
+  openDateTimePicker,
+  closeDateTimePicker,
+  setAppLanguage,
+};

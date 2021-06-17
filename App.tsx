@@ -17,7 +17,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 
 import {persistor, store} from 'app/store';
 import {RootNavigation} from 'app/navigation';
-import {Alert} from 'app/component';
+import {Alert, DateTimePicker} from 'app/component';
 
 const App = () => {
   return (
@@ -27,6 +27,7 @@ const App = () => {
           <RootNavigation />
 
           <Alert />
+          <DateTimePicker />
         </NavigationContainer>
       </PersistGate>
     </Provider>

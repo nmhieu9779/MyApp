@@ -6,7 +6,12 @@ import {
 } from 'app/sagas/constants';
 import _ from 'lodash';
 
-import {hideAlert, showAlert} from '../actions';
+import {
+  closeDateTimePicker,
+  hideAlert,
+  openDateTimePicker,
+  showAlert,
+} from '../actions';
 
 interface CommonState {
   alert: {
@@ -17,6 +22,10 @@ interface CommonState {
   loadingStatus: {
     [key: string]: boolean;
   };
+  dateTimePicker: {
+    isVisible: boolean;
+    onCallback: (date: Date) => void;
+  };
 }
 
 const initialCommonState = {
@@ -26,6 +35,9 @@ const initialCommonState = {
     message: '',
   },
   loadingStatus: {},
+  dateTimePicker: {
+    isVisible: false,
+  },
 } as CommonState;
 
 const commonReducer = createReducer(initialCommonState, builder => {
@@ -34,6 +46,14 @@ const commonReducer = createReducer(initialCommonState, builder => {
   });
   builder.addCase(hideAlert, state => {
     state.alert = initialCommonState.alert;
+  });
+  builder.addCase(openDateTimePicker, (state, action) => {
+    state.dateTimePicker = _.merge(state.dateTimePicker, action.payload, {
+      isVisible: true,
+    });
+  });
+  builder.addCase(closeDateTimePicker, state => {
+    state.dateTimePicker = initialCommonState.dateTimePicker;
   });
   builder.addMatcher(
     action => {

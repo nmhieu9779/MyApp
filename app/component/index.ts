@@ -7,3 +7,4 @@ export * from './RCIcon';
 export * from './Divider';
 export * from './RCTextInput';
 export * from './GroupButton';
+export * from './DateTimePicker';
