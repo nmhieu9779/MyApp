@@ -12,5 +12,7 @@
   "CategoryName": "Category Name",
   "Expense/Income": "Expense/Income",
   "EnterNote": "Enter note",
-  "Suggestion": "Suggestion"
+  "Suggestion": "Suggestion",
+  "AddWallet": "Add wallet",
+  "SelectWalletTitle": "Include in total"
 }

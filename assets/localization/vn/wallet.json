@@ -12,5 +12,7 @@
   "CategoryName": "Tên nhóm",
   "Expense/Income": "Khoản thu/Khoản chi",
   "EnterNote": "Nhập ghi chú",
-  "Suggestion": "Gợi ý"
+  "Suggestion": "Gợi ý",
+  "AddWallet": "Thêm ví",
+  "SelectWalletTitle": "Tính vào tổng"
 }

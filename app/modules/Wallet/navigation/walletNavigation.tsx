@@ -7,6 +7,7 @@ import {
   SelectCategory,
   AddCategory,
   Note,
+  SelectWallet,
 } from '../components';
 import {ScreenName, LocaleNamespace} from 'app/constants';
 import {useAppTranslation} from 'app/hooks';
@@ -66,6 +67,14 @@ const WalletNavigator = () => {
           ...TransitionPresets.ModalTransition,
         }}
         component={Note}
+      />
+      <Stack.Screen
+        name={ScreenName.SELECT_WALLET}
+        options={{
+          title: translate('SelectWallet'),
+          ...TransitionPresets.ModalTransition,
+        }}
+        component={SelectWallet}
       />
     </Stack.Navigator>
   );

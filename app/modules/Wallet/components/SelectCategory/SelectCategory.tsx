@@ -20,8 +20,8 @@ import {ButtonType, GroupButtonItem, RootStackParamList} from 'app/type';
 import {assets, colors, Styles} from 'app/common/theme';
 import {useAppDimensions, useAppTranslation} from 'app/hooks';
 import {categoryType} from 'app/modules/Wallet/constants';
-import {BudgetIconsName} from 'app/common/theme/budgetAssets';
 import {LocaleNamespace, ScreenName} from 'app/constants';
+import {CategoryDto} from '../../dto';
 
 const styles = StyleSheet.create({
   typeContainer: {
@@ -63,11 +63,7 @@ const SelectCategory = () => {
     [params, navigation],
   );
 
-  const renderItem: ListRenderItem<{
-    icon: BudgetIconsName;
-    title: string;
-    key: string;
-  }> = useCallback(
+  const renderItem: ListRenderItem<CategoryDto> = useCallback(
     ({item, index}) => (
       <React.Fragment>
         <RCButton

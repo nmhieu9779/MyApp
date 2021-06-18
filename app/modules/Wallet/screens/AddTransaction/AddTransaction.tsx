@@ -17,7 +17,7 @@ import {assets, colors, FontSize, Styles} from 'app/common/theme';
 import {ButtonType, RootStackParamList} from 'app/type';
 import {useAppTranslation, useDateTimePicker} from 'app/hooks';
 import {LocaleNamespace, ScreenName} from 'app/constants';
-import {BudgetIconsName} from 'app/common/theme/budgetAssets';
+import {CategoryDto, WalletDto} from 'app/modules/Wallet/dto';
 
 const styles = StyleSheet.create({
   container: {
@@ -56,12 +56,18 @@ const AddTransaction = () => {
   const [openDateTimePicker] = useDateTimePicker();
 
   const [note, setNote] = useState<string>('');
-  const [category, setCategory] = useState<{
-    icon: BudgetIconsName;
-    title: string;
-    key: string;
-  }>({key: '', title: '', icon: 'wallet'});
+  const [category, setCategory] = useState<CategoryDto>({
+    key: '',
+    title: '',
+    icon: 'wallet',
+  });
   const [date, setDate] = useState<Date>(new Date());
+  const [wallet, setWallet] = useState<WalletDto>({
+    name: 'Ví',
+    amount: 1000000,
+    icon: 'wallet',
+    key: 'vi',
+  });
 
   const onAmountPress = useCallback(() => {
     amountInput.current.focus();
@@ -85,6 +91,15 @@ const AddTransaction = () => {
       setDate(data);
     });
   }, [date, openDateTimePicker]);
+
+  const onSelectWallet = useCallback(() => {
+    navigation.navigate(ScreenName.SELECT_WALLET, {
+      wallet,
+      onCallback: data => {
+        setWallet(data);
+      },
+    });
+  }, [navigation, wallet]);
 
   return (
     <RCList.ScrollView>
@@ -184,11 +199,15 @@ const AddTransaction = () => {
         <RCButton
           buttonStyle={styles.groupContainer}
           type={ButtonType.CLEAR}
-          onPress={() => {}}>
+          onPress={onSelectWallet}>
           <View style={styles.imageContainer}>
-            <RCIcon source={assets.budget.wallet} container={20} size={20} />
+            <RCIcon
+              source={assets.budget[wallet.icon]}
+              container={20}
+              size={20}
+            />
           </View>
-          <RCText style={Styles.flex1}>{'Ví'}</RCText>
+          <RCText style={Styles.flex1}>{wallet.name}</RCText>
           <FeatherIcon
             name={'chevron-right'}
             size={FontSize.large}

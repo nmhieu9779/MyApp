@@ -5,3 +5,4 @@ export * from './TransactionIcons';
 export * from './SelectCategory';
 export * from './AddCategory';
 export * from './Note';
+export * from './SelectWallet';
