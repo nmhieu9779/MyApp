@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-cd Mobile && yarn lint && yarn coverage && cd .. && cd API && yarn lint && yarn coverage
+cd Mobile && yarn lint && yarn coverage && cd .. && cd API && yarn lint && yarn test:cov
