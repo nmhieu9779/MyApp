@@ -61,6 +61,10 @@ const SelectWallet = () => {
     [params, navigation],
   );
 
+  const onAddNewWallet = useCallback(() => {
+    navigation.navigate(ScreenName.ADD_WALLET);
+  }, [navigation]);
+
   const renderItem = useCallback(
     (item: WalletDto) => (
       <React.Fragment>
@@ -92,6 +96,7 @@ const SelectWallet = () => {
     ),
     [params, onPress],
   );
+
   return (
     <RCList.ScrollView style={styles.container}>
       <RCText style={styles.title}>{translation('SelectWalletTitle')}</RCText>
@@ -115,7 +120,7 @@ const SelectWallet = () => {
       <RCButton
         buttonStyle={[styles.itemContainer, styles.newContainer]}
         type={ButtonType.CLEAR}
-        onPress={() => {}}>
+        onPress={onAddNewWallet}>
         <View style={styles.imageContainer}>
           <Ionicons
             name={'add-circle-sharp'}

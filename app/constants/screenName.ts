@@ -7,6 +7,7 @@ enum ScreenName {
   ADD_CATEGORY = 'ADD_CATEGORY',
   NOTE = 'NOTE',
   SELECT_WALLET = 'SELECT_WALLET',
+  ADD_WALLET = 'ADD_WALLET',
 }
 
 export {ScreenName};

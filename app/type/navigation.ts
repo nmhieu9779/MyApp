@@ -29,4 +29,6 @@ export type RootStackParamList = {
     onCallback: (value: WalletDto) => void;
     wallet: WalletDto;
   };
+
+  [ScreenName.ADD_WALLET]: undefined;
 };

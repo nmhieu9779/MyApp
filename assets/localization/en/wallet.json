@@ -14,5 +14,7 @@
   "EnterNote": "Enter note",
   "Suggestion": "Suggestion",
   "AddWallet": "Add wallet",
-  "SelectWalletTitle": "Include in total"
+  "SelectWalletTitle": "Include in total",
+  "WalletName": "Name",
+  "InitialBalance": "Initial Balance"
 }

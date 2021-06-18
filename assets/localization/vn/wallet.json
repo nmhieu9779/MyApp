@@ -14,5 +14,7 @@
   "EnterNote": "Nhập ghi chú",
   "Suggestion": "Gợi ý",
   "AddWallet": "Thêm ví",
-  "SelectWalletTitle": "Tính vào tổng"
+  "SelectWalletTitle": "Tính vào tổng",
+  "WalletName": "Tên",
+  "InitialBalance": "Số tiền hiện có"
 }
