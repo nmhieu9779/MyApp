@@ -1,0 +1,23 @@
+{
+  "devDependencies": {
+    "husky": "^6.0.0"
+  },
+  "name": "myapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmhieu9779/MyApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmhieu9779/MyApp/issues"
+  },
+  "homepage": "https://github.com/nmhieu9779/MyApp#readme",
+  "description": ""
+}
