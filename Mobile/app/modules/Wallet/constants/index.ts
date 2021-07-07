@@ -1,11 +1,13 @@
+import {CategoryDto, CategoryTypeDto} from '../dto';
+
 export interface CategoryType {
-  key: string;
+  key: CategoryDto;
   title: string;
 }
 
 const categoryType = [
-  {key: 'expense', title: 'Expense'},
-  {key: 'income', title: 'Income'},
+  {key: CategoryTypeDto.EXPENSE, title: 'Expense'},
+  {key: CategoryTypeDto.IN_COME, title: 'Income'},
 ];
 
 categoryType.forEach(Object.freeze);

@@ -15,8 +15,9 @@ import {
   RCText,
 } from 'app/component';
 import {LocaleNamespace, ScreenName} from 'app/constants';
-import {useAppTranslation} from 'app/hooks';
+import {useAppDispatch, useAppTranslation} from 'app/hooks';
 import {ButtonType, RootStackParamList} from 'app/type';
+import {createWalletRequest} from '../../actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -53,14 +54,22 @@ const styles = StyleSheet.create({
 const AddWallet = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const translate = useAppTranslation(LocaleNamespace.WALLET);
+  const dispatch = useAppDispatch();
 
   const [icon, setIcon] = useState<BudgetIconsName>('wallet');
   const [walletName, setWalletName] = useState<string>('');
   const [amount, setAmount] = useState<string>('');
 
   const onSave = useCallback(() => {
+    dispatch(
+      createWalletRequest({
+        icon,
+        name: walletName,
+        amount: +amount,
+      }),
+    );
     navigation.goBack();
-  }, [navigation]);
+  }, [navigation, icon, walletName, amount, dispatch]);
 
   useLayoutEffect(() => {
     navigation.setOptions({

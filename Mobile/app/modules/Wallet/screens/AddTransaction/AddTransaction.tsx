@@ -57,16 +57,16 @@ const AddTransaction = () => {
 
   const [note, setNote] = useState<string>('');
   const [category, setCategory] = useState<CategoryDto>({
-    key: '',
-    title: '',
+    id: -1,
+    name: '',
     icon: 'wallet',
   });
   const [date, setDate] = useState<Date>(new Date());
   const [wallet, setWallet] = useState<WalletDto>({
+    id: -1,
     name: 'Ví',
     amount: 1000000,
     icon: 'wallet',
-    key: 'vi',
   });
 
   const onAmountPress = useCallback(() => {
@@ -145,7 +145,7 @@ const AddTransaction = () => {
             style={Styles.flex1}
             fontSize={FontSize.big}
             placeholder={translate('SelectCategoryTitle')}>
-            {category.title}
+            {category.name}
           </RCText>
           <FeatherIcon
             name={'chevron-right'}

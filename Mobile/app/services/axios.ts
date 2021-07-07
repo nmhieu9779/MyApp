@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://60be2ecb8a571b00176e85fa.mockapi.io',
+  baseURL: 'http://192.168.1.39:3001',
   timeout: 20000,
   headers: {
     'Content-Type': 'application/json',

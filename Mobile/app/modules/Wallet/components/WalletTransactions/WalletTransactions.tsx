@@ -1,12 +1,17 @@
 import React, {useCallback} from 'react';
-import moment from 'moment';
 
 import {Card, RCList} from 'app/component';
 import {LocaleNamespace} from 'app/constants';
 import {useAppTranslation} from 'app/hooks';
 import WalletTransactionItem from './WalletTransactionItem';
+import {TransactionDto} from '../../dto';
 
-const WalletTransactions = () => {
+interface Props {
+  data: TransactionDto[];
+}
+
+const WalletTransactions = (props: Props) => {
+  const {data} = props;
   const translate = useAppTranslation(LocaleNamespace.WALLET);
 
   const renderItem = useCallback(
@@ -17,28 +22,7 @@ const WalletTransactions = () => {
   return (
     <Card>
       <Card.Title>{translate('TransactionsTitle')}</Card.Title>
-      <RCList.MapList
-        data={[
-          {
-            id: 0,
-            categoryName: 'Family',
-            walletName: 'Wallet',
-            transactionDate: moment(),
-            transactionType: 'income',
-            amount: 100000,
-          },
-          {
-            id: 1,
-            categoryName: 'Love',
-            walletName: 'Wallet',
-            transactionDate: moment(),
-            transactionType: 'expense',
-            amount: 200000,
-          },
-        ]}
-        idName={'id'}
-        renderItem={renderItem}
-      />
+      <RCList.MapList data={data} idName={'id'} renderItem={renderItem} />
     </Card>
   );
 };

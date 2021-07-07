@@ -15,7 +15,7 @@ export enum ButtonType {
   OUTLINE = 'Outline',
 }
 
-export interface GroupButtonItem {
+export interface GroupButtonItem<T> {
   title: string;
-  key: string;
+  key: T;
 }

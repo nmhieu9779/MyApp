@@ -1,7 +1,7 @@
 import {BudgetIconsName} from 'app/common/theme/budgetAssets';
 import {ScreenName} from 'app/constants';
-import {CategoryType} from 'app/modules/Wallet/constants';
-import {CategoryDto, WalletDto} from 'app/modules/Wallet/dto';
+import {CategoryDto, CategoryTypeDto, WalletDto} from 'app/modules/Wallet/dto';
+import {GroupButtonItem} from './button';
 
 export type RootStackParamList = {
   [ScreenName.TRANSACTION_ICONS]: {
@@ -17,7 +17,7 @@ export type RootStackParamList = {
   };
 
   [ScreenName.ADD_CATEGORY]: {
-    categoryType: CategoryType;
+    categoryType: GroupButtonItem<CategoryTypeDto>;
   };
 
   [ScreenName.NOTE]: {

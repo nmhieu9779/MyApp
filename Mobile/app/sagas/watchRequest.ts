@@ -1,6 +1,6 @@
 import {call, put, takeEvery} from '@redux-saga/core/effects';
 import {AxiosResponse} from 'axios';
-import {camelCase, endsWith} from 'lodash';
+import {endsWith} from 'lodash';
 
 import {api, makeRequest} from 'app/services';
 import {ERROR_POSTFIX, REQUEST_POSTFIX, SUCCESS_POSTFIX} from './constants';
@@ -8,13 +8,19 @@ import {showAlert} from 'app/common/actions';
 
 function* watchRequest({type, payload}: any) {
   try {
-    const getApiRequestProperties = api[camelCase(type)];
+    const getApiRequestProperties = api[type];
 
     if (!getApiRequestProperties) {
       return;
     }
 
     const requestProperties = getApiRequestProperties(payload);
+
+    requestProperties.headers = {
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjI1NjY0Nzc2LCJleHAiOjE2MjU2NjgzNzZ9.WKvQIXuWkZsgibhvXPC4LMbl5a3nlQw7atWJR6hN3Vc',
+      ...requestProperties.headers,
+    };
 
     const response: AxiosResponse<any> = yield call(
       makeRequest,

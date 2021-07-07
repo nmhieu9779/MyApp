@@ -13,9 +13,10 @@ import {RCList, RCText, RCIcon, RCButton, Divider} from 'app/component';
 import {assets, colors, FontSize, Styles} from 'app/common/theme';
 import {ButtonType, RootStackParamList} from 'app/type';
 import {formatCurrency} from 'app/utils';
-import {useAppTranslation} from 'app/hooks';
+import {useAppSelector, useAppTranslation} from 'app/hooks';
 import {LocaleNamespace, ScreenName} from 'app/constants';
 import {WalletDto} from 'app/modules/Wallet/dto';
+import {selectWallets} from '../../selectors';
 
 const styles = StyleSheet.create({
   container: {
@@ -53,6 +54,8 @@ const SelectWallet = () => {
     useRoute<RouteProp<RootStackParamList, ScreenName.SELECT_WALLET>>();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
+  const wallets = useAppSelector(selectWallets);
+
   const onPress = useCallback(
     item => {
       params?.onCallback(item);
@@ -82,7 +85,7 @@ const SelectWallet = () => {
             </RCText>
             <RCText>{formatCurrency(item.amount)}</RCText>
           </View>
-          {params?.wallet.key === item.key && (
+          {params?.wallet.id === item.id && (
             <Entypo
               style={styles.checkIcon}
               name={'check'}
@@ -100,23 +103,7 @@ const SelectWallet = () => {
   return (
     <RCList.ScrollView style={styles.container}>
       <RCText style={styles.title}>{translation('SelectWalletTitle')}</RCText>
-      <RCList.MapList
-        data={[
-          {
-            name: 'Ví',
-            amount: 1000000,
-            icon: 'wallet',
-            key: 'vi',
-          },
-          {
-            name: 'Credit',
-            amount: 1000000,
-            icon: 'book',
-            key: 'credit',
-          },
-        ]}
-        renderItem={renderItem}
-      />
+      <RCList.MapList data={wallets} renderItem={renderItem} idName={'id'} />
       <RCButton
         buttonStyle={[styles.itemContainer, styles.newContainer]}
         type={ButtonType.CLEAR}

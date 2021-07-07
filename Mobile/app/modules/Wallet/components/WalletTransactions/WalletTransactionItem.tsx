@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {StyleSheet, View} from 'react-native';
 import moment from 'moment';
 
 import {RCText, RCIcon} from 'app/component';
 import {assets, colors, FontSize} from 'app/common/theme';
+import {CategoryTypeDto, TransactionDto} from '../../dto';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,9 +30,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const WalletTransactionItem = (props: any) => {
-  const {categoryName, walletName, transactionDate, transactionType, amount} =
-    props;
+const WalletTransactionItem = (props: TransactionDto) => {
+  const {category, wallet, date, amount} = props;
+
+  const isIncome = useMemo(
+    () => category.type === CategoryTypeDto.IN_COME,
+    [category],
+  );
 
   return (
     <View style={styles.container}>
@@ -40,28 +45,26 @@ const WalletTransactionItem = (props: any) => {
         container={40}
         type={'circle'}
         containerStyle={{
-          backgroundColor:
-            transactionType === 'income' ? colors.income : colors.expenses,
+          backgroundColor: isIncome ? colors.income : colors.expenses,
         }}
       />
       <View style={styles.nameContainer}>
         <RCText fontWeight={'400'} fontSize={FontSize.large}>
-          {categoryName}
+          {category.name}
         </RCText>
-        <RCText fontSize={FontSize.small}>{walletName}</RCText>
+        <RCText fontSize={FontSize.small}>{wallet.name}</RCText>
       </View>
       <View style={styles.amountContainer}>
         <RCText bold>{amount}</RCText>
         <RCText fontSize={FontSize.small}>
-          {moment(transactionDate).format('DD/MM/YYYY')}
+          {moment(date).format('DD/MM/YYYY')}
         </RCText>
       </View>
       <View
         style={StyleSheet.flatten([
           styles.divider,
           {
-            backgroundColor:
-              transactionType === 'income' ? colors.income : colors.expenses,
+            backgroundColor: isIncome ? colors.income : colors.expenses,
           },
         ])}
       />

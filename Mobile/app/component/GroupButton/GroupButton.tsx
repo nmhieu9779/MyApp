@@ -39,9 +39,9 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  data: Array<GroupButtonItem>;
+  data: Array<GroupButtonItem<string>>;
 
-  selected: GroupButtonItem;
+  selected: GroupButtonItem<string>;
 
   widthContainer: number;
 
@@ -51,7 +51,7 @@ type Props = {
 
   selectedStyle?: StyleProp<ViewProps>;
 
-  onChange: (item: GroupButtonItem) => void;
+  onChange: (item: GroupButtonItem<string>) => void;
 };
 
 const GroupButton = (props: Props) => {
@@ -104,7 +104,7 @@ const GroupButton = (props: Props) => {
   );
 
   const renderItem = useCallback(
-    (item: GroupButtonItem) => (
+    (item: GroupButtonItem<string>) => (
       <RCButton
         type={ButtonType.CLEAR}
         buttonStyle={StyleSheet.flatten([

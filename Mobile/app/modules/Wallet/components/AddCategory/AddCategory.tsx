@@ -19,11 +19,13 @@ import {
   GroupButton,
   RCButton,
 } from 'app/component';
-import {CategoryType, categoryType} from 'app/modules/Wallet/constants';
-import {ButtonType, RootStackParamList} from 'app/type';
+import {categoryType} from 'app/modules/Wallet/constants';
+import {ButtonType, GroupButtonItem, RootStackParamList} from 'app/type';
 import {LocaleNamespace, ScreenName} from 'app/constants';
 import {BudgetIconsName} from 'app/common/theme/budgetAssets';
-import {useAppTranslation} from 'app/hooks';
+import {useAppDispatch, useAppTranslation} from 'app/hooks';
+import {CategoryTypeDto} from '../../dto';
+import {createCategoryRequest} from '../../actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -66,14 +68,20 @@ const AddCategory = () => {
     useRoute<RouteProp<RootStackParamList, ScreenName.ADD_CATEGORY>>();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const translate = useAppTranslation(LocaleNamespace.WALLET);
+  const dispatch = useAppDispatch();
 
-  const [selected, setSelected] = useState<CategoryType>(params?.categoryType);
+  const [selected, setSelected] = useState<GroupButtonItem<CategoryTypeDto>>(
+    params?.categoryType,
+  );
   const [icon, setIcon] = useState<BudgetIconsName>('wallet');
   const [categoryName, setCategoryName] = useState<string>('');
 
   const onSave = useCallback(() => {
+    dispatch(
+      createCategoryRequest({name: categoryName, icon, type: selected.key}),
+    );
     navigation.goBack();
-  }, [navigation]);
+  }, [navigation, categoryName, icon, selected, dispatch]);
 
   useLayoutEffect(() => {
     navigation.setOptions({

@@ -18,10 +18,11 @@ import {
 } from 'app/component';
 import {ButtonType, GroupButtonItem, RootStackParamList} from 'app/type';
 import {assets, colors, Styles} from 'app/common/theme';
-import {useAppDimensions, useAppTranslation} from 'app/hooks';
+import {useAppDimensions, useAppSelector, useAppTranslation} from 'app/hooks';
 import {categoryType} from 'app/modules/Wallet/constants';
 import {LocaleNamespace, ScreenName} from 'app/constants';
-import {CategoryDto} from '../../dto';
+import {CategoryDto, CategoryTypeDto} from '../../dto';
+import {selectCategories} from '../../selectors';
 
 const styles = StyleSheet.create({
   typeContainer: {
@@ -49,7 +50,11 @@ const SelectCategory = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const translate = useAppTranslation(LocaleNamespace.WALLET);
 
-  const [selected, setSelected] = useState<GroupButtonItem>(categoryType[0]);
+  const [selected, setSelected] = useState<GroupButtonItem<CategoryTypeDto>>(
+    categoryType[0],
+  );
+
+  const categories = useAppSelector(selectCategories(selected.key));
 
   const onChange = useCallback(item => {
     setSelected(item);
@@ -78,7 +83,7 @@ const SelectCategory = () => {
               size={40}
             />
           </View>
-          <RCText style={Styles.flex1}>{item.title}</RCText>
+          <RCText style={Styles.flex1}>{item.name}</RCText>
         </RCButton>
         <Divider size={0.5} width={index === 1 ? undefined : -80} right />
       </React.Fragment>
@@ -127,11 +132,8 @@ const SelectCategory = () => {
       <Divider />
       <RCList.FlatList
         contentContainerStyle={{backgroundColor: colors.white}}
-        data={[
-          {key: 'travel', icon: 'book', title: 'Travel'},
-          {key: 'entertainment', icon: 'entertainment', title: 'Entertainment'},
-        ]}
-        idName={'key'}
+        data={categories}
+        idName={'id'}
         renderItem={renderItem}
         ListFooterComponent={ListFooterComponent}
       />
