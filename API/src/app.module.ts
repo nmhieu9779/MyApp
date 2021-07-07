@@ -4,6 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { configValidationSchema } from './config.schema';
+import { TransactionCategoriesModule } from './transaction-categories/transaction-categories.module';
+import { TransactionWalletsModule } from './transaction-wallets/transaction-wallets.module';
+import { TransactionsModule } from './transactions/transactions.module';
 
 @Module({
   imports: [
@@ -11,7 +14,6 @@ import { configValidationSchema } from './config.schema';
       envFilePath: [`.env.stage.${process.env.STAGE}`],
       validationSchema: configValidationSchema,
     }),
-    TasksModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -26,7 +28,11 @@ import { configValidationSchema } from './config.schema';
         database: configService.get('DB_DATABASE'),
       }),
     }),
+    TasksModule,
     AuthModule,
+    TransactionCategoriesModule,
+    TransactionWalletsModule,
+    TransactionsModule,
   ],
 })
 export class AppModule {}
