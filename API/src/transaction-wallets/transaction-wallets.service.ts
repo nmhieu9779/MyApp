@@ -20,7 +20,7 @@ export class TransactionWalletsService {
     createWalletDto: CreateWalletDto,
     user: User,
   ): Promise<TransactionWallet> {
-    return this.transactionWalletsRepository.createCategory(
+    return this.transactionWalletsRepository.createWallet(
       createWalletDto,
       user,
     );

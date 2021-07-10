@@ -1,3 +1,4 @@
+import { NotFoundException } from '@nestjs/common';
 import { User } from 'src/auth/user.entity';
 import { EntityRepository, Repository } from 'typeorm';
 import { CreateWalletDto } from './dto/create-wallet.dto';
@@ -16,7 +17,17 @@ export class TransactionWalletsRepository extends Repository<TransactionWallet> 
     return wallets;
   }
 
-  async createCategory(
+  async getWallet(user: User, id: number): Promise<TransactionWallet> {
+    const wallet = this.findOne({ where: { id, user } });
+
+    if (!wallet) {
+      throw new NotFoundException(`Wallet with Id ${id} not found`);
+    }
+
+    return wallet;
+  }
+
+  async createWallet(
     createWalletDto: CreateWalletDto,
     user: User,
   ): Promise<TransactionWallet> {
@@ -29,6 +40,20 @@ export class TransactionWalletsRepository extends Repository<TransactionWallet> 
     });
 
     await this.save(wallet);
+
+    return wallet;
+  }
+
+  async updateWallet(
+    user: User,
+    id: number,
+    updateAmount: number,
+  ): Promise<TransactionWallet> {
+    const wallet = await this.getWallet(user, id);
+
+    wallet.amount = wallet.amount + +updateAmount;
+
+    this.save(wallet);
 
     return wallet;
   }
